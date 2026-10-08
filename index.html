@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宋柯颖 Carlene Song</title>
+<meta name="description" content="宋柯颖（Carlene Song）· 商业化增长 × 产品运营 · 美团外卖">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<!-- 网站的所有文字/数据都在 content.js 里，改本文件无效 -->
+<style>
+:root{
+  --bg:#faf9f7;
+  --text:#1a1d23;
+  --dim:#4a5160;
+  --faint:#8a91a0;
+  --line:rgba(28,30,68,.1);
+  --accent:#6d28d9;
+  --accent-2:#db2777;
+  --accent-soft:#f3effc;
+  --side-w:300px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:Georgia,"Songti SC","SimSun","PingFang SC","Microsoft YaHei",serif;
+  line-height:1.85;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+/* ===== 时尚背景：色块晕染 + 细颗粒 ===== */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(48vw 42vw at 88% -6%, rgba(219,39,119,.14), transparent 62%),
+    radial-gradient(44vw 40vw at -8% 30%, rgba(109,40,217,.12), transparent 60%),
+    radial-gradient(50vw 44vw at 70% 108%, rgba(14,165,233,.12), transparent 62%),
+    linear-gradient(180deg,#fdfcff 0%,#faf9f7 55%,#f7f5f4 100%);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection{background:rgba(109,40,217,.18)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.sans{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif}
+
+/* ===== 布局 ===== */
+.page{max-width:1120px;margin:0 auto;padding:56px 40px 80px;display:grid;
+  grid-template-columns:var(--side-w) 1fr;gap:64px}
+
+/* ===== 侧边栏 ===== */
+.sidebar{position:sticky;top:56px;align-self:start;font-size:14.5px}
+.avatar{
+  width:120px;height:120px;border-radius:50%;
+  background:linear-gradient(135deg,#6d28d9,#db2777);
+  box-shadow:0 8px 26px rgba(109,40,217,.3);
+  display:grid;place-items:center;color:#fff;font-size:40px;font-weight:700;
+  font-family:"Segoe UI",sans-serif;letter-spacing:1px;margin-bottom:22px;
+}
+.side-name{font-size:26px;font-weight:700;line-height:1.3}
+.side-name .en{display:block;font-size:15px;color:var(--faint);font-weight:400;
+  letter-spacing:2px;margin-top:2px}
+.side-role{font-size:14.5px;color:var(--dim);margin:10px 0 4px}
+.side-affil{font-size:13.5px;color:var(--faint)}
+.side-block{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.side-block h3{font-size:12px;color:var(--faint);letter-spacing:2.5px;
+  text-transform:uppercase;margin-bottom:12px;font-weight:600;font-family:"Segoe UI",sans-serif}
+.side-block ul{list-style:none}
+.side-block li{padding:3px 0;color:var(--dim);font-size:14px}
+.side-block li b{color:var(--text);font-weight:600}
+.side-contact li{display:flex;gap:8px;align-items:baseline}
+.side-contact .ic{width:16px;text-align:center;flex-shrink:0}
+.side-nav{display:flex;flex-direction:column;gap:2px}
+.side-nav a{
+  color:var(--dim);text-decoration:none;padding:6px 10px;margin-left:-10px;
+  border-radius:6px;transition:.15s;font-size:14.5px;
+}
+.side-nav a:hover{color:var(--accent);background:var(--accent-soft);text-decoration:none}
+.side-nav a.cur{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.side-lang{display:flex;gap:16px}
+.side-lang span b{color:var(--text)}
+
+/* ===== 主内容 ===== */
+.main{min-width:0}
+.main section{padding:38px 0 10px;border-top:1px solid var(--line)}
+.main section:first-child{border-top:none;padding-top:0}
+h2{font-size:21px;font-weight:700;margin-bottom:20px;letter-spacing:.5px;
+  display:flex;align-items:baseline;gap:14px}
+h2 .no{font-size:13px;color:var(--faint);font-family:"Segoe UI",monospace;font-weight:400}
+
+/* 关于 */
+.about p{color:var(--dim);margin-bottom:12px;max-width:640px}
+.about p b{color:var(--text);font-weight:600}
+.about .hl{color:var(--accent)}
+
+/* 经历列表 */
+.xp{margin-bottom:8px}
+.xp-item{display:grid;grid-template-columns:150px 1fr;gap:22px;padding:20px 0;
+  border-bottom:1px dashed var(--line)}
+.xp-item:last-child{border-bottom:none}
+.xp-when{font-family:"Segoe UI",monospace;font-size:13px;color:var(--faint);padding-top:3px}
+.xp-what h3{font-size:16.5px;font-weight:700;margin-bottom:2px}
+.xp-what h3 small{font-size:13px;color:var(--faint);font-weight:400;margin-left:8px}
+.xp-what .pos{font-size:14px;color:var(--accent);margin-bottom:8px;font-weight:600}
+.xp-what ul{list-style:none;margin-bottom:10px}
+.xp-what li{font-size:14px;color:var(--dim);padding:2px 0 2px 18px;position:relative}
+.xp-what li::before{content:"·";position:absolute;left:4px;color:var(--faint);font-weight:700}
+.xp-what li b{color:var(--text)}
+.xp-stats{display:flex;flex-wrap:wrap;gap:8px}
+.xp-stats span{font-size:12.5px;padding:3px 12px;border-radius:999px;
+  background:var(--accent-soft);color:var(--accent);border:1px solid rgba(109,40,217,.2);
+  font-family:"Segoe UI",sans-serif}
+.tbd{font-size:12.5px;color:#9a7d2e;background:rgba(154,125,46,.06);
+  border:1px dashed rgba(154,125,46,.3);padding:2px 12px;border-radius:999px}
+
+/* AI 实践 */
+.ai-list{display:flex;flex-direction:column;gap:14px}
+.ai-item{background:rgba(255,255,255,.65);border:1px solid var(--line);border-radius:10px;
+  padding:18px 22px;display:grid;grid-template-columns:44px 1fr;gap:16px;
+  backdrop-filter:blur(4px);transition:.2s}
+.ai-item:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(109,40,217,.1)}
+.ai-item .ic{width:44px;height:44px;border-radius:9px;background:var(--accent-soft);
+  display:grid;place-items:center;font-size:20px}
+.ai-item h3{font-size:15.5px;font-weight:700}
+.ai-item .tag{font-size:12px;color:var(--faint);margin-left:10px;font-family:"Segoe UI",sans-serif}
+.ai-item p{font-size:14px;color:var(--dim);margin-top:2px}
+.ai-item .meta{margin-top:10px;font-size:13px;color:var(--accent);font-weight:600;display:inline-block}
+.ai-note{font-size:14px;color:var(--dim);margin-top:18px;padding:14px 18px;
+  background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0}
+.ai-note b{color:var(--accent)}
+
+/* 教育 */
+.edu-item{display:grid;grid-template-columns:150px 1fr;gap:22px;padding:18px 0;
+  border-bottom:1px dashed var(--line)}
+.edu-item:last-child{border-bottom:none}
+.edu-item .when{font-family:"Segoe UI",monospace;font-size:13px;color:var(--faint);padding-top:3px}
+.edu-item h3{font-size:16.5px;font-weight:700}
+.edu-item .deg{font-size:14px;color:var(--accent);font-weight:600;margin:2px 0 6px}
+.edu-item ul{list-style:none}
+.edu-item li{font-size:14px;color:var(--dim);padding:2px 0 2px 18px;position:relative}
+.edu-item li::before{content:"·";position:absolute;left:4px;color:var(--faint);font-weight:700}
+.edu-item li b{color:var(--text)}
+
+/* 作品集 */
+.wk{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.wk-item{border:1px solid var(--line);border-radius:10px;padding:20px 22px;
+  background:rgba(255,255,255,.65);backdrop-filter:blur(4px);transition:.2s}
+.wk-item:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(219,39,119,.08)}
+.wk-item .cat{font-size:11.5px;letter-spacing:1.5px;color:var(--faint);font-weight:700;
+  margin-bottom:8px;font-family:"Segoe UI",sans-serif;text-transform:uppercase}
+.wk-item h3{font-size:15.5px;font-weight:700;margin-bottom:6px;line-height:1.5}
+.wk-item p{font-size:13.5px;color:var(--dim)}
+.wk-item .meta{margin-top:12px;font-size:13px;color:var(--accent);font-weight:600}
+
+/* 技能 */
+.sk{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:11px 0;
+  border-bottom:1px dashed var(--line);font-size:14.5px}
+.sk:last-of-type{border-bottom:none}
+.sk .k{color:var(--faint);letter-spacing:1px;font-size:13px;font-family:"Segoe UI",sans-serif;
+  text-transform:uppercase;padding-top:2px}
+.sk .v{color:var(--dim)}
+.sk .v b{color:var(--text);font-weight:600}
+
+/* 页脚 */
+.foot{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* 响应式 */
+@media (max-width:860px){
+  .page{grid-template-columns:1fr;gap:36px;padding:32px 22px 60px}
+  .sidebar{position:static}
+  .side-nav{display:none}
+  .side-block.edu-side{display:none}
+  .xp-item,.edu-item{grid-template-columns:1fr;gap:6px}
+  .wk{grid-template-columns:1fr}
+  .sk{grid-template-columns:1fr;gap:2px}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ================= 侧边栏（内容由 content.js 渲染） ================= -->
+  <aside class="sidebar">
+    <div class="avatar sans" id="avatar">宋</div>
+    <div class="side-name" id="side-name">宋柯颖<span class="en sans">Carlene Song</span></div>
+    <div class="side-role" id="side-role"></div>
+    <div class="side-affil" id="side-affil"></div>
+
+    <div class="side-block side-nav-block">
+      <nav class="side-nav">
+        <a href="#about" class="cur">简介</a>
+        <a href="#exp">工作经历</a>
+        <a href="#ai">AI 实践</a>
+        <a href="#edu">教育背景</a>
+        <a href="#works">作品集</a>
+        <a href="#skills">技能与语言</a>
+      </nav>
+    </div>
+
+    <div class="side-block">
+      <h3>EDUCATION</h3>
+      <ul class="edu-side" id="side-edu"></ul>
+    </div>
+
+    <div class="side-block">
+      <h3>CONTACT</h3>
+      <ul class="side-contact">
+        <li><span class="ic">✉</span><a id="side-email" href="#"></a></li>
+        <li><span class="ic">💬</span><span id="side-wechat"></span></li>
+      </ul>
+    </div>
+
+    <div class="side-block">
+      <h3>LANGUAGES</h3>
+      <div class="side-lang" id="side-lang"></div>
+    </div>
+  </aside>
+
+  <!-- ================= 主内容（内容由 content.js 渲染） ================= -->
+  <main class="main">
+
+    <!-- 简介 -->
+    <section id="about" class="about">
+      <h2>简介 <span class="no">01</span></h2>
+      <div id="about-body"></div>
+    </section>
+
+    <!-- 工作经历 -->
+    <section id="exp">
+      <h2>工作经历 <span class="no">02</span></h2>
+      <div class="xp" id="jobs-body"></div>
+    </section>
+
+    <!-- AI 实践 -->
+    <section id="ai">
+      <h2>AI 实践 <span class="no">03</span></h2>
+      <div class="ai-list" id="ai-body"></div>
+      <div class="ai-note" id="ai-note"></div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="edu">
+      <h2>教育背景 <span class="no">04</span></h2>
+      <div id="edu-body"></div>
+    </section>
+
+    <!-- 作品集 -->
+    <section id="works">
+      <h2>作品集 <span class="no">05</span></h2>
+      <div class="wk" id="works-body"></div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills">
+      <h2>技能与语言 <span class="no">06</span></h2>
+      <div id="skills-body"></div>
+    </section>
+
+    <div class="foot">
+      <span id="foot-left"></span>
+      <span id="foot-right"></span>
+    </div>
+
+  </main>
+</div>
+
+<!-- 网站内容都在 content.js 里；本文件只负责版式与渲染 -->
+<script src="content.js"></script>
+
+<script>
+/* ====== 渲染引擎：把 content.js 里的内容填进页面 ====== */
+const esc = s => String(s ?? '');
+
+function render(d){
+  // 侧边栏
+  document.getElementById('avatar').textContent = d.profile.avatarText;
+  document.getElementById('side-name').innerHTML =
+    esc(d.profile.name) + '<span class="en sans">' + esc(d.profile.nameEn) + '</span>';
+  document.getElementById('side-role').textContent = d.profile.role;
+  document.getElementById('side-affil').textContent = d.profile.affiliation;
+  const mail = document.getElementById('side-email');
+  mail.href = 'mailto:' + d.profile.email;
+  mail.textContent = d.profile.email;
+  document.getElementById('side-wechat').textContent = '微信：' + d.profile.wechat;
+
+  // 侧边教育
+  document.getElementById('side-edu').innerHTML = d.education.map((e,i)=>
+    '<li' + (i>0?' style="margin-top:10px"':'') + '>' + esc(e.sideShort) +
+    '<br><b>' + esc(e.school) + '</b> · ' + esc(e.sideYear) + '</li>'
+  ).join('');
+
+  // 侧边语言
+  document.getElementById('side-lang').innerHTML = d.languages.map(l=>
+    '<span>' + esc(l.name) + ' <b>' + esc(l.level) + '</b></span>'
+  ).join('');
+
+  // 简介
+  document.getElementById('about-body').innerHTML =
+    d.about.map(p=>'<p>'+p+'</p>').join('');
+
+  // 工作经历
+  document.getElementById('jobs-body').innerHTML = d.jobs.map(j=>{
+    const lis = j.highlights.map(h=>'<li>'+h+'</li>').join('');
+    const stats = j.stats.map(s=>'<span>'+esc(s)+'</span>').join('');
+    const pend = j.pending ? '<div style="margin-top:10px"><span class="tbd">'+esc(j.pending)+'</span></div>' : '';
+    return '<div class="xp-item">'
+      + '<div class="xp-when">'+esc(j.period)+'</div>'
+      + '<div class="xp-what">'
+      + '<h3>'+esc(j.company)+' <small>'+esc(j.dept)+'</small></h3>'
+      + '<div class="pos">'+esc(j.position)+'</div>'
+      + '<ul>'+lis+'</ul>'
+      + '<div class="xp-stats">'+stats+'</div>'
+      + pend
+      + '</div></div>';
+  }).join('');
+
+  // AI 实践
+  document.getElementById('ai-body').innerHTML = d.aiProjects.map(a=>{
+    const meta = a.link
+      ? '<a class="meta" href="'+esc(a.link)+'" target="_blank" rel="noopener">'+esc(a.linkText)+'</a>'
+      : '';
+    return '<div class="ai-item"><div class="ic">'+esc(a.icon)+'</div><div>'
+      + '<h3>'+esc(a.name)+'<span class="tag">'+esc(a.tag)+'</span></h3>'
+      + '<p>'+esc(a.desc)+'</p>'
+      + meta
+      + '</div></div>';
+  }).join('');
+  document.getElementById('ai-note').innerHTML = d.aiNote;
+
+  // 教育
+  document.getElementById('edu-body').innerHTML = d.education.map(e=>
+    '<div class="edu-item"><div class="when">'+esc(e.period)+'</div><div>'
+    + '<h3>'+esc(e.school)+'</h3>'
+    + '<div class="deg">'+esc(e.degree)+'</div>'
+    + '<ul>'+e.items.map(i=>'<li>'+i+'</li>').join('')+'</ul>'
+    + '</div></div>'
+  ).join('');
+
+  // 作品集
+  document.getElementById('works-body').innerHTML = d.works.map(w=>{
+    const meta = w.link
+      ? '<a class="meta" href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.linkText)+'</a>'
+      : '<span class="meta">'+esc(w.linkText)+'</span>';
+    return '<div class="wk-item"><div class="cat">'+esc(w.cat)+'</div>'
+      + '<h3>'+esc(w.name)+'</h3>'
+      + '<p>'+esc(w.desc)+'</p>'
+      + meta + '</div>';
+  }).join('');
+
+  // 技能
+  document.getElementById('skills-body').innerHTML = d.skills.map(s=>
+    '<div class="sk"><span class="k">'+esc(s.key)+'</span><span class="v">'+s.value+'</span></div>'
+  ).join('');
+
+  // 页脚
+  document.getElementById('foot-left').textContent = d.footer.left;
+  document.getElementById('foot-right').textContent = d.footer.right;
+
+  bindSpy();
+}
+
+/* 启动：content.js 已在上方用 <script src> 载入，直接渲染 */
+if (window.SITE_CONTENT) { render(window.SITE_CONTENT); }
+else { console.error('content.js 未加载成功：请确认该文件存在，且以 window.SITE_CONTENT = 开头。'); }
+
+/* 侧边导航滚动高亮 */
+function bindSpy(){
+  const secs=[...document.querySelectorAll('.main section')];
+  const links=[...document.querySelectorAll('.side-nav a')];
+  addEventListener('scroll',()=>{
+    let cur=secs[0].id;
+    secs.forEach(s=>{if(s.getBoundingClientRect().top<=140)cur=s.id});
+    links.forEach(a=>a.classList.toggle('cur',a.getAttribute('href')==='#'+cur));
+  },{passive:true});
+}
+
+</script>
+</body>
+</html>
