@@ -92,10 +92,50 @@ h2{font-size:21px;font-weight:700;margin-bottom:20px;letter-spacing:.5px;
   display:flex;align-items:baseline;gap:14px}
 h2 .no{font-size:13px;color:var(--faint);font-family:"Segoe UI",monospace;font-weight:400}
 
-/* 关于 */
-.about p{color:var(--dim);margin-bottom:12px;max-width:640px}
-.about p b{color:var(--text);font-weight:600}
-.about .hl{color:var(--accent)}
+/* ===== 开屏 Splash：整屏照片 + 介绍，入场动画 ===== */
+.splash{min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:56px 40px 72px;position:relative}
+.splash-inner{display:grid;grid-template-columns:330px 1fr;gap:60px;align-items:center;
+  max-width:1000px;width:100%}
+.hero-photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px;
+  box-shadow:0 24px 56px rgba(28,30,68,.2);display:block;
+  animation:photoIn 1s cubic-bezier(.2,.7,.3,1) .15s both}
+.hero-name{font-size:38px;font-weight:700;line-height:1.2}
+.hero-name .en{display:block;font-size:15px;color:var(--faint);font-weight:400;
+  letter-spacing:3px;margin-top:6px;font-family:"Segoe UI",sans-serif}
+.hero-role{font-size:16px;color:var(--accent);font-weight:600;margin:10px 0 18px}
+.hero-label{font-size:12px;color:var(--faint);letter-spacing:2.5px;margin:24px 0 12px;
+  font-weight:700;font-family:"Segoe UI",sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:13px;padding:5px 14px;border-radius:999px;
+  background:var(--accent-soft);color:var(--accent);border:1px solid rgba(109,40,217,.18);
+  font-family:"Segoe UI",sans-serif}
+.hobby-line{font-size:14.5px;color:var(--dim);line-height:2;max-width:520px}
+.splash .about p{color:var(--dim);margin-bottom:12px;max-width:560px;font-size:15px}
+.splash .about p b{color:var(--text);font-weight:600}
+.splash .about .hl{color:var(--accent)}
+.splash-right > *{animation:riseIn .8s cubic-bezier(.2,.7,.3,1) both}
+.splash-right > *:nth-child(1){animation-delay:.25s}
+.splash-right > *:nth-child(2){animation-delay:.35s}
+.splash-right > *:nth-child(3){animation-delay:.45s}
+.splash-right > *:nth-child(4){animation-delay:.55s}
+.splash-right > *:nth-child(5){animation-delay:.65s}
+.splash-right > *:nth-child(6){animation-delay:.75s}
+.splash-right > *:nth-child(7){animation-delay:.85s}
+/* 下滑提示 */
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  color:var(--faint);font-size:12px;letter-spacing:2px;font-family:"Segoe UI",sans-serif;
+  text-align:center;animation:riseIn .8s 1.1s both;cursor:pointer;text-decoration:none}
+.scroll-hint:hover{color:var(--accent);text-decoration:none}
+.scroll-hint::after{content:"↓";display:block;font-size:16px;margin-top:4px;
+  animation:bob 2s ease-in-out infinite}
+/* 开场幕布 */
+.curtain{position:fixed;inset:0;z-index:99;background:#faf9f7;pointer-events:none;
+  animation:curtainUp .7s ease .2s both}
+@keyframes curtainUp{from{opacity:1}to{opacity:0;visibility:hidden}}
+@keyframes photoIn{from{opacity:0;transform:scale(1.06) translateY(14px)}to{opacity:1;transform:none}}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
 /* 经历列表 */
 .xp{margin-bottom:8px}
@@ -176,12 +216,37 @@ h2 .no{font-size:13px;color:var(--faint);font-family:"Segoe UI",monospace;font-w
   .side-nav{display:none}
   .side-block.edu-side{display:none}
   .xp-item,.edu-item{grid-template-columns:1fr;gap:6px}
+  .splash{padding:40px 22px 64px;min-height:auto}
+  .splash-inner{grid-template-columns:1fr;gap:28px;max-width:480px;text-align:center}
+  .hero-photo{max-width:300px;margin:0 auto}
+  .chips{justify-content:center}
+  .hobby-line{margin:0 auto}
   .wk{grid-template-columns:1fr}
   .sk{grid-template-columns:1fr;gap:2px}
 }
 </style>
 </head>
 <body>
+
+<!-- 开场幕布 -->
+<div class="curtain"></div>
+
+<!-- ================= 开屏：整屏照片 + 介绍（无侧边栏） ================= -->
+<section class="splash" id="top">
+  <div class="splash-inner">
+    <img class="hero-photo" id="hero-photo" src="photo.jpg" alt="照片">
+    <div class="splash-right">
+      <div class="hero-name" id="hero-name"></div>
+      <div class="hero-role" id="hero-role"></div>
+      <div class="about" id="about-body"></div>
+      <div class="hero-label">擅长 STRENGTHS</div>
+      <div class="chips" id="hero-strengths"></div>
+      <div class="hero-label">爱好 HOBBIES</div>
+      <div class="hobby-line" id="hero-hobbies"></div>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#exp">向下浏览</a>
+</section>
 
 <div class="page">
 
@@ -194,8 +259,8 @@ h2 .no{font-size:13px;color:var(--faint);font-family:"Segoe UI",monospace;font-w
 
     <div class="side-block side-nav-block">
       <nav class="side-nav">
-        <a href="#about" class="cur">简介</a>
-        <a href="#exp">工作经历</a>
+        <a href="#top">首页</a>
+        <a href="#exp" class="cur">工作经历</a>
         <a href="#ai">AI 实践</a>
         <a href="#edu">教育背景</a>
         <a href="#works">作品集</a>
@@ -225,40 +290,34 @@ h2 .no{font-size:13px;color:var(--faint);font-family:"Segoe UI",monospace;font-w
   <!-- ================= 主内容（内容由 content.js 渲染） ================= -->
   <main class="main">
 
-    <!-- 简介 -->
-    <section id="about" class="about">
-      <h2>简介 <span class="no">01</span></h2>
-      <div id="about-body"></div>
-    </section>
-
     <!-- 工作经历 -->
     <section id="exp">
-      <h2>工作经历 <span class="no">02</span></h2>
+      <h2>工作经历 <span class="no">01</span></h2>
       <div class="xp" id="jobs-body"></div>
     </section>
 
     <!-- AI 实践 -->
     <section id="ai">
-      <h2>AI 实践 <span class="no">03</span></h2>
+      <h2>AI 实践 <span class="no">02</span></h2>
       <div class="ai-list" id="ai-body"></div>
       <div class="ai-note" id="ai-note"></div>
     </section>
 
     <!-- 教育背景 -->
     <section id="edu">
-      <h2>教育背景 <span class="no">04</span></h2>
+      <h2>教育背景 <span class="no">03</span></h2>
       <div id="edu-body"></div>
     </section>
 
     <!-- 作品集 -->
     <section id="works">
-      <h2>作品集 <span class="no">05</span></h2>
+      <h2>作品集 <span class="no">04</span></h2>
       <div class="wk" id="works-body"></div>
     </section>
 
     <!-- 技能 -->
     <section id="skills">
-      <h2>技能与语言 <span class="no">06</span></h2>
+      <h2>技能与语言 <span class="no">05</span></h2>
       <div id="skills-body"></div>
     </section>
 
@@ -299,6 +358,23 @@ function render(d){
   document.getElementById('side-lang').innerHTML = d.languages.map(l=>
     '<span>' + esc(l.name) + ' <b>' + esc(l.level) + '</b></span>'
   ).join('');
+
+  // 首页 Hero
+  if (d.hero){
+    if (d.hero.photo) {
+      document.getElementById('hero-photo').src = d.hero.photo;
+      const av = document.getElementById('avatar');
+      av.style.background = 'none';
+      av.style.boxShadow = '0 8px 26px rgba(109,40,217,.25)';
+      av.innerHTML = '<img src="'+d.hero.photo+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';
+    }
+    document.getElementById('hero-name').innerHTML =
+      esc(d.profile.name) + '<span class="en">' + esc(d.profile.nameEn) + '</span>';
+    document.getElementById('hero-role').textContent = d.hero.role;
+    document.getElementById('hero-strengths').innerHTML =
+      d.hero.strengths.map(s=>'<span>'+esc(s)+'</span>').join('');
+    document.getElementById('hero-hobbies').textContent = d.hero.hobbies;
+  }
 
   // 简介
   document.getElementById('about-body').innerHTML =
